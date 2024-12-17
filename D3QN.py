@@ -75,10 +75,6 @@ class D3QN:
             if self.epsilon > self.eps_min else self.eps_min
 
     def choose_action(self, observation, isTrain=True):
-        observation[0] = 0
-        observation[1] = 0
-        observation[2] = 0
-        observation[3] = 0
         state = T.tensor([observation], dtype=T.float).to(device)
         q_vals = self.q_eval.forward(state)
         action = T.argmax(q_vals).item()
